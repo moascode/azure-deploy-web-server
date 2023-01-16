@@ -1,9 +1,2 @@
 {
-  "tagName": {
-    "type": "String",
-    "metadata": {
-      "displayName": "Tag Name",
-      "description": "Name of the resource tag"
-    }
-  }
 }
