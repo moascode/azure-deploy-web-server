@@ -16,11 +16,10 @@
 		"image_offer": "UbuntuServer",
 		"image_sku": "18.04-LTS",
 	
-		"managed_image_resource_group_name": "web-server-rg",
+		"managed_image_resource_group_name": "udacity-packer-rg",
 		"managed_image_name": "ubuntu1804PackerImage",
 
 		"azure_tags": {
-			"environment": "Non-Prod",
 			"project": "Udacity-Web-Server"
 		},
 	
