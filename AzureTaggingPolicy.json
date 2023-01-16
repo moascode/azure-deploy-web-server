@@ -1,6 +1,6 @@
 {
     "type": "Microsoft.Authorization/policyDefinitions",
-    "name": "tagging-policy", 
+    "name": "tagging-policy-definition", 
     "properties": {
       "displayName": "Deny creation of resources without tags",
       "policyType": "BuiltIn",
@@ -10,20 +10,10 @@
         "version": "1.0.1",
         "category": "Tags"
       },
-      "version": "1.0.1",
-      "parameters": {
-        "tagName": {
-          "type": "String",
-          "metadata": {
-            "displayName": "Tag Name",
-            "description": "Name of the tag, such as 'environment'"
-          }
-        }
-      },
       "policyRule": {
         "if": {
-          "field": "[concat('tags[', parameters('tagName'), ']')]",
-          "exists": "false"
+          "value": "[less(length(field('tags')), 1)]",
+          "equals": "true"
         },
         "then": {
           "effect": "deny"
