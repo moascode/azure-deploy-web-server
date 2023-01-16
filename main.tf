@@ -10,7 +10,7 @@ provider "azurerm" {
 resource "azurerm_resource_group" "rg" {
   name     = "${var.prefix}-rg"
   location = var.location
-  tags = var.tags
+  tags     = var.tags
 }
 
 resource "azurerm_virtual_network" "vn" {
@@ -18,7 +18,7 @@ resource "azurerm_virtual_network" "vn" {
   address_space       = ["10.0.0.0/16"]
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
-  tags = var.tags
+  tags                = var.tags
 }
 
 resource "azurerm_subnet" "vn_subnet" {
@@ -26,7 +26,7 @@ resource "azurerm_subnet" "vn_subnet" {
   resource_group_name  = azurerm_resource_group.rg.name
   virtual_network_name = azurerm_virtual_network.vn.name
   address_prefixes     = ["10.0.0.0/24"]
-  tags = var.tags
+  tags                 = var.tags
 }
 
 resource "azurerm_network_security_group" "nsg" {
@@ -59,7 +59,7 @@ resource "azurerm_network_interface" "nic" {
   name                = "${var.prefix}-nic-${count.index}"
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
-  tags = var.tags
+  tags                = var.tags
 
   ip_configuration {
     name                          = "${var.prefix}-subnet-${count.index}"
@@ -69,19 +69,19 @@ resource "azurerm_network_interface" "nic" {
 }
 
 resource "azurerm_public_ip" "publicip" {
-  count = var.instances_count
-  name = "${var.prefix}-pip-${count.index}"
+  count               = var.instances_count
+  name                = "${var.prefix}-pip-${count.index}"
   resource_group_name = azurerm_resource_group.rg.name
-  location = azurerm_resource_group.rg.location
-  allocation_method = "Static"
-  tags = var.tags
+  location            = azurerm_resource_group.rg.location
+  allocation_method   = "Static"
+  tags                = var.tags
 }
 
 resource "azurerm_lb" "lb" {
   name                = "${var.prefix}-lb"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
-  tags = var.tags
+  tags                = var.tags
 
   frontend_ip_configuration {
     name                 = "${var.prefix}-lb-frontendip"
@@ -92,7 +92,7 @@ resource "azurerm_lb" "lb" {
 resource "azurerm_lb_backend_address_pool" "lb_backend_address_pool" {
   name                = "${var.prefix}-lb-backendip"
   loadbalancer_id     = azurerm_lb.lb.id
-  tags = var.tags
+  tags                = var.tags
 }
 
 resource "azurerm_lb_probe" "lb_probe" {
@@ -101,7 +101,7 @@ resource "azurerm_lb_probe" "lb_probe" {
   port                = var.application_port
   loadbalancer_id     = azurerm_lb.lb.id
   resource_group_name = azurerm_resource_group.rg.name
-  tags = var.tags
+  tags                = var.tags
 }
 
 resource "azurerm_lb_rule" "lb_rule_app" {
@@ -122,10 +122,10 @@ resource "azurerm_network_interface_backend_address_pool_association" "nic_lb_as
   network_interface_id    = azurerm_network_interface.nic.*.id[count.index]
   ip_configuration_name   = azurerm_network_interface.nic.*.ip_configuration.0.name[count.index]
   backend_address_pool_id = azurerm_lb_backend_address_pool.lb_backend_address_pool.id
-  tags = var.tags
+  tags                    = var.tags
 }
 
-data "azurerm_shared_image" "example" {
+data "azurerm_shared_image" "image" {
   name                = var.packer_image_name
   gallery_name        = var.packer_gallery_name
   resource_group_name = var.packer_resource_group_name
@@ -172,5 +172,5 @@ resource "azurerm_virtual_machine_data_disk_attachment" "managed_disk_attach" {
   virtual_machine_id = azurerm_linux_virtual_machine.vm.*.id[count.index]
   lun                = count.index + 10
   caching            = "ReadWrite"
-  tags                 = var.tags
+  tags               = var.tags
 }
