@@ -1,0 +1,47 @@
+{
+	"variables": {
+		"client_id": "{{env `TF_VAR_ARM_client_id`}}",
+		"client_secret": "{{env `TF_VAR_ARM_client_secret`}}",
+		"subscription_id": "{{env `TF_VAR_ARM_subscription_id`}}",
+		"tenant_id": "{{env `TF_VAR_ARM_tenant_id`}}",
+		"resource_group": "{{env `TF_VAR_ARM_resource_group`}}"
+	},
+	"builders": [{
+		"type": "azure-arm",
+
+		"client_id": "{{user `client_id`}}",
+		"client_secret": "{{user `client_secret`}}",
+		"subscription_id": "{{user `subscription_id`}}",
+		"tenant_id": "{{user `tenant_id`}}",
+
+		"os_type": "Linux",
+		"image_publisher": "Canonical",
+		"image_offer": "UbuntuServer",
+		"image_sku": "18.04-LTS",
+	
+		"build_resource_group_name": "{{user `resource_group`}}",
+		"managed_image_resource_group_name": "{{user `resource_group`}}",
+		"managed_image_name": "ubuntu1804PackerImage",
+
+		"azure_tags": {
+			"project": "udacity-web-server"
+		},
+	
+		"vm_size": "Standard_DS2_v2"
+	}],
+	"provisioners": [{
+		"inline": [
+			"sudo apt-get update",
+			"sudo apt-get install -y apache2",
+			"sudo systemctl start apache2",
+			"sudo systemctl enable apache2",
+
+			"echo 'Hello, World!' > index.html",
+			"nohup busybox httpd -f -p 80 &",
+
+			"sudo mv index.html /var/www/html/index.html"
+		],
+		"inline_shebang": "/bin/sh -x",
+		"type": "shell"
+	}]
+}

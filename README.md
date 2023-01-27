@@ -17,7 +17,13 @@ For this project, you will write a Packer template and a Terraform template to d
 4. Install [Terraform](https://www.terraform.io/downloads.html)
 
 ### Instructions
-**Your words here**
+Use "source init.sh" to set environment variables for azure
+Use "packer build ubuntu1804.json" to create ubuntu server image
+use "terraform init" to initialize terraform
+Use "terraform validate" to verify the configuration
+Use "terraform plan -out plan.out" to plan the deployment
+Use "terraform apply plan.out" to apply the deployment
+Use "terraform destroy" to delete all resources
 
 ### Output
 **Your words here**

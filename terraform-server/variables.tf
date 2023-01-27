@@ -4,34 +4,40 @@ variable "prefix" {
   default = "udacity-web-server"
 }
 
-variable "subscription_id" {
-  description = "Subscription ID of azure account"
-  type = string
-  default = "${env.ARM_SUBSCRIPTION_ID}"
-}
-
-variable "client_id" {
-  description = "App ID of azure account"
-  type = string
-  default = "${env.ARM_CLIENT_ID}"
-}
-
-variable "client_secret" {
-  description = "Password of azure account"
-  type = string
-  default = "${env.ARM_CLIENT_SECRET}"
-}
-
-variable "tenant_id" {
-  description = "Tenant ID of azure account"
-  type = string
-  default = "${env.ARM_TENANT_ID}"
-}
-
 variable "location" {
   description = "The Azure Region in which all resources should be created."
   type = string
-  default = "Southeast Asia"
+  default = "East US"
+}
+
+variable "ARM_subscription_id" {
+  description = "Subscription ID of azure account"
+  type = string
+  default = ""
+}
+
+variable "ARM_client_id" {
+  description = "App ID of azure account"
+  type = string
+  default = ""
+}
+
+variable "ARM_client_secret" {
+  description = "Password of azure account"
+  type = string
+  default = ""
+}
+
+variable "ARM_tenant_id" {
+  description = "Tenant ID of azure account"
+  type = string
+  default = ""
+}
+
+variable "ARM_resource_group" {
+  description = "Tenant ID of azure account"
+  type = string
+  default = ""
 }
 
 variable "vm_username" {
@@ -43,7 +49,7 @@ variable "vm_username" {
 variable "vm_password" {
   description = "Password for Virtual machines"
   type = string
-  default = "${env.WEB_SERVER_VM_PASSWORD}"
+  default = "Hellouvm2023"
 }
 
 variable "vm_size" {
@@ -60,27 +66,12 @@ variable "tags" {
    }
 }
 
-variable "application_port" {
-   description = "Port that is exposed to the external load balancer"
-   default     = 80
-}
-
-variable "packer_resource_group_name" {
-   description = "Name of the resource group in which the Packer image is created"
-   default     = "udacity-packer-rg"
-}
-
 variable "packer_image_name" {
    description = "Name of the Packer image"
    default     = "ubuntu1804PackerImage"
 }
 
-variable "packer_gallery_name" {
-   description = "Name of the Packer gallery"
-   default     = ""
-}
-
-variable "ssh_access_port" {
-   description = "Port that is used to access VMs"
-   default     = "22"
+variable "instances_count" {
+   description = "Number of instances of VM"
+   default     = "1"
 }
