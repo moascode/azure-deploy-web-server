@@ -1,11 +1,11 @@
-# Deploying a scalable IaaS web server in Azure
+# Deploy a scalable IaaS web server in Azure
 
 ## Introduction
 This project uses a Packer template and a Terraform template to deploy a customizable and scalable web server in Azure
 
 ## Getting Started
 1. Clone this repository
-2. Directories and files information 
+2. Information about directories and files 
 
         - azure-policy -> contains azure policy rule
         - packer-image -> contains packer template to create linux image
@@ -21,8 +21,8 @@ This project uses a Packer template and a Terraform template to deploy a customi
 3. Install [Packer](https://www.packer.io/downloads)
 4. Install [Terraform](https://www.terraform.io/downloads.html)
 
-## Quick server setup
-* Run the command in bash CLI to setup the webserver
+## Quick server deployment
+* Run the command in bash CLI to deploy the webserver
 
         source run.sh
 
@@ -35,7 +35,7 @@ This project uses a Packer template and a Terraform template to deploy a customi
     5. **Resource Group:** \<Resource group name>
     6. **Number of instances of VM:** \<Ex: 2>
 
-* After successful run, you should see similar to following screen
+* After successful run, you should see the following screen
 
     ![Deployment completed](misc/terraform-deployed.png)
 
