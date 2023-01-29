@@ -71,7 +71,6 @@ variable "packer_image_name" {
    default     = "ubuntu1804PackerImage"
 }
 
-variable "instances_count" {
+variable "vm_count" {
    description = "Number of instances of VM"
-   default     = "1"
 }

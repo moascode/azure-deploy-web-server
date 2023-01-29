@@ -1,7 +1,7 @@
 # Deploying a scalable IaaS web server in Azure
 
 ### Introduction
-This project use a Packer template and a Terraform template to deploy a customizable, scalable web server in Azure.
+This project uses a Packer template and a Terraform template to deploy a customizable and scalable web server in Azure
 
 ### Getting Started
 1. Clone this repository
