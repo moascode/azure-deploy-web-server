@@ -8,12 +8,21 @@ This project uses a Packer template and a Terraform template to deploy a customi
 
 ### Dependencies
 1. Create an [Azure Account](https://portal.azure.com) 
+2. Install [Git Bash](https://git-scm.com/downloads)
 2. Install the [Azure command line interface](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
 3. Install [Packer](https://www.packer.io/downloads)
 4. Install [Terraform](https://www.terraform.io/downloads.html)
 
 ### Usage
-Use the following commands to setup the web server
+Run the command in bash CLI to setup the webserver
+
+`source run.sh`
+
+The script requires following inputs from user
+    
+    1.  
+
+    
 
 * **`source init.sh`** to set environment variables for azure
 * **`packer build ubuntu1804.json`** to create ubuntu server image
