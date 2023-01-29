@@ -31,7 +31,7 @@ echo "---------Setting policy---------"
 az policy assignment create --name "tagging-policy" --policy "tagging-policy-definition"
 
 echo "---------Deleting existing packer image---------"
-#az image delete -g $TF_VAR_ARM_resource_group -n "ubuntu1804PackerImage"
+az image delete -g $TF_VAR_ARM_resource_group -n "ubuntu1804PackerImage"
 echo "done!"
 
 echo "---------Building packer image---------"
@@ -45,19 +45,18 @@ echo "---------Destroying existing server---------"
 terraform destroy
 
 echo "---------Planning deployment---------"
-terraform plan -out server.plan
+terraform plan -out solution.plan
 
-echo "---------Applying deployment---------"
-terraform apply server.plan
+echo "---------Starting deployment---------"
+terraform apply solution.plan
 
-echo "---------Deployment done!---------"
-terraform show
+echo -e "\n---------Deployment done!---------"
 cd ..
 
-ehco "---------Pulic IP address---------"
+echo -e "\n---------Pulic IP address---------"
 az network public-ip list -g $TF_VAR_ARM_resource_group -o table
 
-ehco "---------Inbound port---------"
+echo -e "\n---------Inbound port---------"
 az network lb inbound-nat-rule list -g $TF_VAR_ARM_resource_group --lb-name "udacity-web-server-lb" -o table
 
 echo -e "\n=========Use <Address>:<FrontendPort> to access the web server========="

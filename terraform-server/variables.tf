@@ -1,7 +1,7 @@
 variable "prefix" {
   description = "The prefix which should be used for all resources in this example"
   type = string
-  default = "udacity-web-server"
+  default = "web-server"
 }
 
 variable "location" {
@@ -43,7 +43,7 @@ variable "ARM_resource_group" {
 variable "vm_username" {
   description = "Username for Virtual machines"
   type = string
-  default = "udacityvm"
+  default = "moascodevm"
 }
 
 variable "vm_password" {
