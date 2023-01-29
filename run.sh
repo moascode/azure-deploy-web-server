@@ -57,6 +57,6 @@ echo -e "\n---------Pulic IP address---------"
 az network public-ip list -g $TF_VAR_ARM_resource_group -o table
 
 echo -e "\n---------Inbound port---------"
-az network lb inbound-nat-rule list -g $TF_VAR_ARM_resource_group --lb-name "udacity-web-server-lb" -o table
+az network lb inbound-nat-rule list -g $TF_VAR_ARM_resource_group --lb-name "web-server-lb" -o table
 
 echo -e "\n=========Use <Address>:<FrontendPort> to access the web server========="

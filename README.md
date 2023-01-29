@@ -113,7 +113,7 @@ This project uses a Packer template and a Terraform template to deploy a customi
 4. Get the public address and port to access the webserver
 
         az network public-ip list -g $TF_VAR_ARM_resource_group -o table
-        az network lb inbound-nat-rule list -g $TF_VAR_ARM_resource_group --lb-name "udacity-web-server-lb" -o table
+        az network lb inbound-nat-rule list -g $TF_VAR_ARM_resource_group --lb-name "web-server-lb" -o table
 
     ![deployed-manual](misc/terraform-deployed-manual.png)
 
@@ -133,6 +133,11 @@ This project uses a Packer template and a Terraform template to deploy a customi
         <img src="misc/faq-site-cant-be-reached.png" alt="Refused to connect" style="width:50%">
 
     * Follow steps as below to start the webserver in the vm
+
+            #!/bin/bash
+            
+            echo 'Hello, World!' > index.html
+            nohup busybox httpd -f -p 80 &
 
         ![Refused to connect solution](misc/faq-site-cant-be-reached-solution.png)
 
