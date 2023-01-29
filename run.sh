@@ -35,7 +35,7 @@ az image delete -g $TF_VAR_ARM_resource_group -n "ubuntu1804PackerImage"
 echo "done!"
 
 echo "---------Building packer image---------"
-packer build packer-image/ubuntu1804.json
+packer build packer-image/server.json
 
 echo "---------Initializing terraform---------"
 cd terraform-server

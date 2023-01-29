@@ -81,7 +81,7 @@ This project uses a Packer template and a Terraform template to deploy a customi
 ### Create server image using packer
 1. Run following command to create image in azure
 
-        packer build packer-image/ubuntu1804.json
+        packer build packer-image/server.json
 
     ![build](misc/packer-build-image.png)
 
@@ -93,7 +93,7 @@ This project uses a Packer template and a Terraform template to deploy a customi
 
     ![init](misc/terraform-init.png)
 
-2. Change *default* value of *variables.tf* file according to your requirement
+2. Change *default* value of *vars.tf* file according to your requirement
 
     ![variable-tag](misc/variable-tag.png)
 
