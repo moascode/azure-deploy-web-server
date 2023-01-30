@@ -73,4 +73,5 @@ variable "packer_image_name" {
 
 variable "vm_count" {
    description = "Number of instances of VM"
+   default = 2
 }

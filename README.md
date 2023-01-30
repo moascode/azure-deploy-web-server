@@ -33,7 +33,7 @@ This project uses a Packer template and a Terraform template to deploy a customi
     3. **Subscription ID:** \<Azure subscription id>
     4. **Tenant ID:** \<Azure tenant id>
     5. **Resource Group:** \<Resource group name>
-    6. **Number of instances of VM:** \<Ex: 2>
+    6. **Number of instances of VM:** \<Default is 2, change *terraform-server/vars.tf* -> vm_count according to your requirement >
 
 * After successful run, you should see the following screen
 
@@ -95,20 +95,23 @@ This project uses a Packer template and a Terraform template to deploy a customi
 
 2. Change *default* value of *vars.tf* file according to your requirement
 
-    ![variable-tag](misc/variable-tag.png)
+    ![variable-tag](misc/number_of_vm_count.png)
 
 2. Plan infrastructure deployment and provide number of VM you want to create 
 
         terraform plan -out solution.plan
 
-    ![vm](misc/vm-count.png)
     ![plan](misc/terraform-plan.png)
+
+    Check this image for full output of plan  [solution.plan](misc/terraform-plan-full.png)
 
 3. Deploy infrastructure
 
         terraform apply solution.plan
 
     ![apply](misc/terraform-apply.png)
+
+    Check this image for full output of apply  [plan deployemnt](misc/terraform-apply-full.png)
 
 4. Get the public address and port to access the webserver
 
