@@ -79,15 +79,13 @@ This project uses a Packer template and a Terraform template to deploy a customi
 
     ![plan](misc/terraform-plan.png)
 
-    Check this image for full output of plan  [solution.plan](misc/terraform-plan-full.png)
+    Check this image for full output of [solution.plan](misc/terraform-plan-full.png)
 
 3. Deploy infrastructure
 
         terraform apply solution.plan
 
-    ![apply](misc/terraform-apply.png)
-
-    Check this image for full output of [terraform apply](output-terraform-apply.png)
+    ![apply](output-terraform-apply.png)
 
 4. Get the public address and port to access the webserver
 
